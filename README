@@ -2,6 +2,8 @@ jQuery Simple Metadata Plugin
 
 By Jared Grippe
 
+Inspired by John Resig's Metadata http://docs.jquery.com/Plugins/Metadata
+
 This plugin is capable of silently, and automatically, importing metadata 
 from an element's data attribute the first time you use the jQuery data store
 
@@ -9,3 +11,6 @@ For example, you can do:
 <li id="thing" data="{some:'random', json: 'data'}">...</li>
 jQuery('#thing').data('some') == 'random';
 
+Aside from being a lot simpler and a heck of a lot less code I like having all 
+of the meta data about an element in one place. Just throw some JSON in inline
+and get it from .data() // Simple
