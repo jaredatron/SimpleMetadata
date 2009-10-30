@@ -28,18 +28,17 @@
   function importData(elem, id){
     imported[id] = true;
     jQuery.cache[id] || (jQuery.cache[id] = {});
-    var jelem = $(elem),
-        data = jelem.attr('data'),
-        cache = jQuery.cache[id];
+    elem = jQuery(elem);
+    var data = elem.attr('data'), cache = jQuery.cache[id];
         
-    jelem.removeAttr('data');
+    elem.removeAttr('data');
     if (!data) return;
     
     try{
-      data = eval('('+data+'); //importing data');
+      data = eval('('+data+')');
     }catch(e){
       var error = new SyntaxError("invalid json in data attribute");
-      error.element = elem;
+      error.element = elem[0];
       error.json = data;
       throw error;
     }
