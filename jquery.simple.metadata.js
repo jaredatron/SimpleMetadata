@@ -21,15 +21,15 @@
   *
   * simple =)
   */
-(function() {
-  
-  var jdata = jQuery.data, imported = [];
+(function($) {
+  $.simplemetadata = true;
+  var jdata = $.data, imported = [];
   
   function importData(elem, id){
     imported[id] = true;
-    jQuery.cache[id] || (jQuery.cache[id] = {});
-    elem = jQuery(elem);
-    var data = elem.attr('data'), cache = jQuery.cache[id];
+    $.cache[id] || ($.cache[id] = {});
+    elem = $(elem);
+    var data = elem.attr('data'), cache = $.cache[id];
         
     elem.removeAttr('data');
     if (!data) return;
@@ -47,11 +47,11 @@
       cache[name] = data[name];
   }
 
-  jQuery.data = function(elem, name, data) {
+  $.data = function(elem, name, data) {
     var id = jdata(elem);
     if (!imported[id]) importData(elem, id);
     return (name && data) ? jdata(elem, name, data) :
-           name ? jQuery.cache[ id ][ name ] : id;
+           name ? $.cache[ id ][ name ] : id;
   };
 
-})();
+})(jQuery);
