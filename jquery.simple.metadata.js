@@ -50,7 +50,8 @@
   jQuery.data = function(elem, name, data) {
     var id = jdata(elem);
     if (!imported[id]) importData(elem, id);
-    return name ? jQuery.cache[ id ][ name ] : id;
+    return (name && data) ? jdata(elem, name, data) :
+           name ? jQuery.cache[ id ][ name ] : id;
   };
 
 })();
